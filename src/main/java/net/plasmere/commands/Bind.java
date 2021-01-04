@@ -6,8 +6,11 @@ import net.plasmere.objects.Guild;
 
 public class Bind {
 
+    public static void execute(MessageReceivedEvent event, Guild guild){
+        event.getChannel().sendMessage(compile(event, guild).build()).queue();
+    }
 
-    public static EmbedBuilder execute(MessageReceivedEvent event, Guild guild) {
+    public static EmbedBuilder compile(MessageReceivedEvent event, Guild guild) {
         if (event.getAuthor().getIdLong() != event.getGuild().getOwnerIdLong()) {
             return new EmbedBuilder().setTitle("Binding for ``" + event.getGuild().getName() + "``")
                     .addField("FAILURE", "You are not the owner of this guild!", false)

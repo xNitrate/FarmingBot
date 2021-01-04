@@ -79,8 +79,10 @@ public class MessageListener extends ListenerAdapter {
 
         if (isThisCommand(command, AliasType.BIND)){
             Bind.execute(event, guild);
+            return;
         } else if (isThisCommand(command, AliasType.PREFIX)){
             Prefix.execute(event, guild);
+            return;
         }
 
         if (guild.bound_to != 0L) { if (event.getChannel().getIdLong() != guild.bound_to) return; }
@@ -119,6 +121,7 @@ public class MessageListener extends ListenerAdapter {
         int amount = 0;
         for (Guild guild : ObjectHelper.guilds) {
             guild.saveInfo();
+            amount++;
         }
 
         ObjectHelper.flushGuilds();
@@ -130,6 +133,7 @@ public class MessageListener extends ListenerAdapter {
         int amount = 0;
         for (Player player : ObjectHelper.players) {
             player.saveInfo();
+            amount++;
         }
 
         ObjectHelper.flushPlayers();
@@ -140,6 +144,7 @@ public class MessageListener extends ListenerAdapter {
     public boolean isThisCommand(String command, AliasType check){
         try {
             for (String a : Aliases.aliases.get(check)) {
+                //System.out.println("Checking : " + check + " on " + a);
                 if (command.equals(a)) return true;
             }
         } catch (Exception e){

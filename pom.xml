@@ -6,7 +6,7 @@
 
     <groupId>net.plasmere</groupId>
     <artifactId>FarmingBot</artifactId>
-    <version>0.0.0-alpha1</version>
+    <version>1.0.0</version>
     <build>
         <plugins>
             <plugin>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.2.0_222</version>
+            <version>4.2.0_224</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
